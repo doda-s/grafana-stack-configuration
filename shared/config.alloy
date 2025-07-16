@@ -17,6 +17,7 @@ otelcol.receiver.otlp "example" {
 otelcol.processor.batch "example" {
   output {
     metrics = [otelcol.exporter.otlphttp.prometheus.input]
+    logs= [otelcol.exporter.otlphttp.loki.input]
     traces  = [otelcol.exporter.otlphttp.tempo.input]
   }
 }
