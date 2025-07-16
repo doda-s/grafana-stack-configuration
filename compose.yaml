@@ -63,7 +63,8 @@ services:
     image: grafana/grafana
     container_name: grafana
     volumes:
-      - ./shared/grafana-datasources:/etc/grafana/provisioning/datasources
+      - ./grafana-provisioning:/etc/grafana/provisioning
+      - ./grafana-plugins:/var/lib/grafana/plugins
     networks:
       - observability
     environment:
@@ -95,6 +96,13 @@ services:
     command: -config.file=/etc/loki/local-config.yaml
     volumes:
       - ./shared/loki-config.yaml:/etc/loki/local-config.yaml
+    networks:
+      - observability
+
+  pyroscope:
+    image: grafana/pyroscope
+    ports:
+    - 4040:4040
     networks:
       - observability
 
