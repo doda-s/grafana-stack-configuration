@@ -79,7 +79,7 @@ services:
   alloy:
     image: grafana/alloy:latest
     container_name: alloy
-    command: ["run", "--storage.path=/var/lib/alloy/data", "/etc/alloy/config.alloy"]
+    command: ["run", "--stability.level=public-preview", "--storage.path=/var/lib/alloy/data", "/etc/alloy/config.alloy"]
     volumes:
       - ./shared/config.alloy:/etc/alloy/config.alloy
     ports:
@@ -101,6 +101,10 @@ services:
 
   pyroscope:
     image: grafana/pyroscope
+    volumes:
+      - ./shared/pyroscope.yaml:/etc/pyroscope.yaml
+    command:
+      - -config.file=/etc/pyroscope.yaml
     ports:
     - 4040:4040
     networks:
@@ -109,3 +113,9 @@ services:
 networks:
   observability:
     driver: bridge
+
+volumes:
+  grafana-plugins:
+    external: true
+  tempo-data:
+    external: true
