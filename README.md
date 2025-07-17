@@ -1,5 +1,14 @@
 # Grafana Stack
 
+Para iniciar a stack, utilize:
+
+```bash
+docker compose up
+```
+
+> [!IMPORTANT]
+> No Linux, talvez seja necessário alterar as permissões das pastas geradas pelas binds do Docker
+
 ## Grafana
 
 Ferramenta utilizada para ver os dados em gráficos, organizados em dashboards. Você pode utilizar um dashboard pronto, impotando os arquivos correspondentes da pasta `/dashboards.
@@ -11,6 +20,7 @@ Ferramenta utilizada para ver os dados em gráficos, organizados em dashboards. 
 ### Diretórios
 
 - `/grafana-plugins` - Contém os plugins instalados no Grafana
+- `/grafana` - Contém os dados do Grafana
 
 ### Endereço de Acesso
 
@@ -70,3 +80,8 @@ Baixe o plugin do Pyroscope para o Grafana, e cloque na pasta `grafana-plugins/`
 
 > [!IMPORTANT]
 > Sem o plugin do Pyroscope, o Grafana não irá funcionar.
+
+### Diretórios
+
+- Arquivo de configuração: `/shared/pyroscope.yaml`
+- Dados do Pyroscope: `/pyroscope-data`
