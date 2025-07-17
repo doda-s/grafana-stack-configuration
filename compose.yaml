@@ -101,6 +101,7 @@ services:
 
   pyroscope:
     image: grafana/pyroscope
+    container_name: pyroscope
     volumes:
       - ./shared/pyroscope.yaml:/etc/pyroscope.yaml
     command:
